@@ -1,0 +1,14 @@
+# Follow Symbolically linked files
+Options +FollowSymLinks
+
+# Turn rewrite on
+RewriteEngine on
+
+# Rewrite querystring variables into seo friendly mvc structure
+RewriteRule ^([a-zA-Z]*)/?([a-zA-Z]*)?/?([a-zA-Z0-9]*)?/?$ index.php?controller=$1&action=$2&id=$3 [NC,L]
+
+# provide a universal error document
+# Might need tweaks
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^.*$ http://localhost/mvc/app/templates/errorTemplate.php [L]

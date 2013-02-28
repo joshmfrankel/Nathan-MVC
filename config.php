@@ -16,7 +16,6 @@
      ///////////////////////////////
 
     define("SITE_ROOT", "");
-    define('LIBRARY_DIR', '../lib');
 
      /////////////////////
     // DIRECTORY PATHS //
@@ -36,11 +35,11 @@
     define('JQUERY_ENABLED',	TRUE);
     define('MODERNIZR_ENABLED', TRUE);
 
-     ////////////////
+    ////////////////
     // SEO CONFIG //
-     ////////////////
-     define('SITE_NAME', 'A Simple MVC Framework');
-     define('SITE_DESC', 'A fork of the Nathan Simple MVC framework.  The goal is to extend upon the base functionality.');
+    ////////////////
+    define('SITE_NAME', 'A Simple MVC Framework');
+    define('SITE_DESC', 'A fork of the Nathan Simple MVC framework.  The goal is to extend upon the base functionality.');
 
     /**
      * GOOGLE specific settings

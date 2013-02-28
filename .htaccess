@@ -11,4 +11,4 @@ RewriteRule ^([a-zA-Z]*)/?([a-zA-Z]*)?/?([a-zA-Z0-9]*)?/?$ index.php?controller=
 # Might need tweaks
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^.*$ http://localhost/mvc/app/templates/errorTemplate.php [L]
+RewriteRule ^.*$ http://localhost/mvc/app/templates/error.php [L]

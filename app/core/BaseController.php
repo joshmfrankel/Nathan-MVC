@@ -1,23 +1,24 @@
-<?php 
+<?php
 
 abstract class BaseController {
 
 	protected $controller;
 	protected $action;
 	protected $id;
-	
+	protected $meta = array();
+
 	/**
 	 * Constructor Method
 	 *
 	 * Because we are extending this class for every
 	 * controller class, we have a universal way of setting
 	 * basic querystring variables
-	 * 
+	 *
 	 * @param array $querystring The querystring
 	 */
 	public function __construct($querystring) {
 		$this->controller = $querystring['controller'];
-		$this->action = $querystring['action'];		
+		$this->action = $querystring['action'];
 		$this->id = $querystring['id'];
 	}
 
@@ -37,13 +38,27 @@ abstract class BaseController {
 	}
 
 	/**
+	 * Set the page meta data for rendering
+	 *
+	 * The meta property will be available from any template that is loaded
+	 */
+	public function setMetaData() {
+
+		// Set the Title Tag
+		$title = ucfirst(str_replace('Controller', '', $this->controller)) . ' - ' . SITE_NAME;
+
+		$this->meta['description'] = SITE_DESC;
+		$this->meta['title'] = $title;
+	}
+
+	/**
 	 * Return View method
 	 *
 	 * This method will output the appropriate view.  There is also an optional full View flag
 	 * for non-partial pages
 	 *
 	 * @todo Finish up implementation of $viewModel
-	 * 
+	 *
 	 * @param  [type] $viewModel [description]
 	 * @param  [type] $fullView  [description]
 	 * @return [type]            [description]
@@ -52,9 +67,11 @@ abstract class BaseController {
 
 		$view = SITE_ROOT . VIEWS_DIR . get_class($this) . '/' . $this->action . '.php';
 
-		// Include the Header file
+		// Set the Page Meta Data
+		$this->setMetaData();
 
-		require_once SITE_ROOT . TEMPLATE_DIR . 'header.php'; 
+		// Include the Header file
+		require_once SITE_ROOT . TEMPLATE_DIR . 'header.php';
 
 		if ($fullView) {
 			require(SITE_ROOT . TEMPLATE_DIR . 'template.php');

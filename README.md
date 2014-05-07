@@ -1,4 +1,7 @@
-# Advanced version of Nathan MVC
+# Advanced version of Nathan MVC  
+
+Josh Frankel  
+An updated verseion of the original tutorial framework with additions.
 
 ## TODO
 1. Namespaces
